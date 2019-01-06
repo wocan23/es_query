@@ -33,16 +33,28 @@ func Start(){
 
 
 
-func CreateHeader() *gtk.HBox{
+func CreateHeader() *gtk.Fixed{
 
-	header := gtk.NewHBox(false,10)
+	header := gtk.NewFixed()
 	header.SetSizeRequest(common.WindowWidth,common.NavItemHeight)
 
-	connItem := component.GenerateNavItem(common.NavItemWidth,common.NavItemHeight,"/Users/zhaoshuai/Documents/go_workspace_wocan/es_query/images/conn.png","conn")
-	queryItem := component.GenerateNavItem(common.NavItemWidth,common.NavItemHeight,"/Users/zhaoshuai/Documents/go_workspace_wocan/es_query/images/search.png","search")
-	header.Add(connItem)
-	header.Add(queryItem)
+	hBox := gtk.NewHBox(true,5)
 
+	connItem := component.GenerateNavItem(common.NavItemWidth,common.NavItemHeight,"/Users/zhaoshuai/Documents/go_workspace_wocan/es_query/images/conn.png","conn")
+	docItem := component.GenerateNavItem(common.NavItemWidth,common.NavItemHeight,"/Users/zhaoshuai/Documents/go_workspace_wocan/es_query/images/doc.png","doc")
+	indexItem := component.GenerateNavItem(common.NavItemWidth,common.NavItemHeight,"/Users/zhaoshuai/Documents/go_workspace_wocan/es_query/images/index.png","index")
+	editItem := component.GenerateNavItem(common.NavItemWidth,common.NavItemHeight,"/Users/zhaoshuai/Documents/go_workspace_wocan/es_query/images/editDoc.png","edit")
+	addItem := component.GenerateNavItem(common.NavItemWidth,common.NavItemHeight,"/Users/zhaoshuai/Documents/go_workspace_wocan/es_query/images/addDoc.png","add")
+	searchItem := component.GenerateNavItem(common.NavItemWidth,common.NavItemHeight,"/Users/zhaoshuai/Documents/go_workspace_wocan/es_query/images/search.png","search")
+
+	hBox.Add(connItem)
+	hBox.Add(docItem)
+	hBox.Add(indexItem)
+	hBox.Add(editItem)
+	hBox.Add(addItem)
+	hBox.Add(searchItem)
+
+	header.Put(hBox,20,10)
 	header.ShowAll()
 	return header
 }

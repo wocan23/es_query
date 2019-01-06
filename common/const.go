@@ -13,8 +13,8 @@ const (
 	SubWindowHeight = 600
 
 
-	NavItemWidth = 150
-	NavItemHeight = 200
+	NavItemWidth = 50
+	NavItemHeight = 70
 
 	FormItemWith = 160
 	FormItemHeight = 30
