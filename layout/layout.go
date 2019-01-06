@@ -38,7 +38,7 @@ func CreateHeader() *gtk.Fixed{
 	header := gtk.NewFixed()
 	header.SetSizeRequest(common.WindowWidth,common.NavItemHeight)
 
-	hBox := gtk.NewHBox(true,5)
+	hBox := gtk.NewHBox(true,0)
 
 	connItem := component.GenerateNavItem(common.NavItemWidth,common.NavItemHeight,"/Users/zhaoshuai/Documents/go_workspace_wocan/es_query/images/conn.png","conn")
 	docItem := component.GenerateNavItem(common.NavItemWidth,common.NavItemHeight,"/Users/zhaoshuai/Documents/go_workspace_wocan/es_query/images/doc.png","doc")
@@ -47,12 +47,12 @@ func CreateHeader() *gtk.Fixed{
 	addItem := component.GenerateNavItem(common.NavItemWidth,common.NavItemHeight,"/Users/zhaoshuai/Documents/go_workspace_wocan/es_query/images/addDoc.png","add")
 	searchItem := component.GenerateNavItem(common.NavItemWidth,common.NavItemHeight,"/Users/zhaoshuai/Documents/go_workspace_wocan/es_query/images/search.png","search")
 
-	hBox.Add(connItem)
-	hBox.Add(docItem)
-	hBox.Add(indexItem)
-	hBox.Add(editItem)
-	hBox.Add(addItem)
-	hBox.Add(searchItem)
+	hBox.PackStart(connItem,false,false,5)
+	hBox.PackStart(docItem,false,false,5)
+	hBox.PackStart(indexItem,false,false,5)
+	hBox.PackStart(editItem,false,false,5)
+	hBox.PackStart(addItem,false,false,5)
+	hBox.PackStart(searchItem,false,false,5)
 
 	header.Put(hBox,20,10)
 	header.ShowAll()

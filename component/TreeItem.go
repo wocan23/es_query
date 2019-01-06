@@ -7,7 +7,7 @@ import (
 
 type TreeData struct{
 	TreeUnit TreeUnit
-	SubTreeData TreeData
+	SubTreeData *TreeData
 }
 
 type TreeUnit struct{

@@ -29,6 +29,7 @@ func GenerateNavItem(width int,height int,imagePath string,title string) *gtk.Bu
 
 	button.Add(vBox)
 	button.SetBorderWidth(0)
-	button.ShowAll()
+	button.SetVisible(true)
+
 	return button
 }
