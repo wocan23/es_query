@@ -5,26 +5,39 @@ import (
 
 	"../constant"
 	"../helper"
+	"../component"
 )
 
 
 func Start(){
 	gtk.Init(nil)
 	window := helper.CreateWindow(constant.WindowTitle,constant.WindowWidth,constant.WindowHeight)
-	window.Add(CreateHeader())
 
-	box := gtk.NewHBox(false,10)
-	box.Add(CreateLeft())
-	box.Add(CreateMain())
-	window.Add(box)
+	vBox := gtk.NewVBox(false,10)
+
+	mBox := gtk.NewHBox(false,10)
+	mBox.Add(CreateLeft())
+	mBox.Add(CreateMain())
+
+	vBox.Add(CreateHeader())
+	vBox.Add(mBox)
+	
+	window.Add(vBox)
 	gtk.Main()
 }
 
 
 
-func CreateHeader() *gtk.Box{
+func CreateHeader() *gtk.HBox{
 
-	return nil
+	header := gtk.NewHBox(true,10)
+
+	connItem := component.GenerateNavItem(constant.NavItemWidth,constant.WindowHeight,"../images/conn.png","conn")
+	queryItem := component.GenerateNavItem(constant.NavItemWidth,constant.WindowHeight,"../images/search.png","search")
+	header.Add(connItem)
+	header.Add(queryItem)
+
+	return header
 }
 
 

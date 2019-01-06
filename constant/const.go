@@ -1,14 +1,19 @@
 package constant
 
 const (
+	WindowTitle = "ElasticSearch Query"
+
 	WindowWidth = 1000
 	WindowHeight = 600
 
 	SubWindowWidth = 400
 	SubWindowHeight = 600
 
-	WindowTitle = "ElasticSearch Query"
 
+	NavItemWidth = 80
+	NavItemHeight = 100
 
+	FormItemWith = 160
+	FormItemHeight = 30
 
-	)
+)
