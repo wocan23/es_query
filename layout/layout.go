@@ -3,7 +3,7 @@ package layout
 import (
 	"github.com/mattn/go-gtk/gtk"
 
-	"../constant"
+	"../common"
 	"../helper"
 	"../component"
 )
@@ -11,17 +11,22 @@ import (
 
 func Start(){
 	gtk.Init(nil)
-	window := helper.CreateWindow(constant.WindowTitle,constant.WindowWidth,constant.WindowHeight)
+	window := helper.CreateWindow(common.WindowTitle,common.WindowWidth,common.WindowHeight)
 
-	vBox := gtk.NewVBox(false,10)
+	vBox := gtk.NewVBox(false,0)
+	vBox.SetSizeRequest(common.WindowWidth,common.WindowHeight)
+
 
 	mBox := gtk.NewHBox(false,10)
+	mBox.SetSizeRequest(common.WindowLeftWidth,common.WindowLeftHeight)
 	mBox.Add(CreateLeft())
 	mBox.Add(CreateMain())
 
 	vBox.Add(CreateHeader())
 	vBox.Add(mBox)
-	
+
+	vBox.ShowAll()
+
 	window.Add(vBox)
 	gtk.Main()
 }
@@ -30,23 +35,28 @@ func Start(){
 
 func CreateHeader() *gtk.HBox{
 
-	header := gtk.NewHBox(true,10)
+	header := gtk.NewHBox(false,10)
+	header.SetSizeRequest(common.WindowWidth,common.NavItemHeight)
 
-	connItem := component.GenerateNavItem(constant.NavItemWidth,constant.WindowHeight,"../images/conn.png","conn")
-	queryItem := component.GenerateNavItem(constant.NavItemWidth,constant.WindowHeight,"../images/search.png","search")
+	connItem := component.GenerateNavItem(common.NavItemWidth,common.NavItemHeight,"/Users/zhaoshuai/Documents/go_workspace_wocan/es_query/images/conn.png","conn")
+	queryItem := component.GenerateNavItem(common.NavItemWidth,common.NavItemHeight,"/Users/zhaoshuai/Documents/go_workspace_wocan/es_query/images/search.png","search")
 	header.Add(connItem)
 	header.Add(queryItem)
 
+	header.ShowAll()
 	return header
 }
 
 
-func CreateLeft() *gtk.Box{
-
-	return nil
+func CreateLeft() *gtk.VBox{
+	left := gtk.NewVBox(false,0)
+	left.SetSizeRequest(common.WindowLeftWidth,common.WindowLeftHeight)
+	return left
 }
 
-func CreateMain() *gtk.Box{
+func CreateMain() *gtk.VBox{
 
-	return nil
+	left := gtk.NewVBox(false,0)
+	left.SetSizeRequest(common.WindowWidth-common.WindowLeftWidth,common.WindowLeftHeight)
+	return left
 }
